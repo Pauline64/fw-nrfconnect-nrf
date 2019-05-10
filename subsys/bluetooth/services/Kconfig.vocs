@@ -1,0 +1,22 @@
+menuconfig BT_GATT_VOCS
+	bool "Volume Control service"
+	select BT_GATT_POOL
+	help
+	  Enable BLE GATT volume Control service.
+
+if BT_GATT_VOCS
+
+config BT_GATT_VCS_POLL_BUTTON
+	bool
+	default n
+	prompt "Support button state polling"
+	help
+	  Enable support for button state polling
+	  (button state change notify always supported)
+
+
+module = BT_GATT_VOCS
+module-str = VCS
+source "${ZEPHYR_BASE}/subsys/logging/Kconfig.template.log_config"
+
+endif # BT_GATT_VOCS
